@@ -18,7 +18,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
 
-    let email = req.body.email
+    let email = req.body.email 
     let password = req.body.password
     let userFOund = await db.users.findOne({
         where: {
@@ -51,19 +51,7 @@ const login = async (req, res) => {
         // });
     }
 }
-
-const create = async (req, res) => {
-    let email = req.body.email
-    let password = req.body.password
-    const hashpassword = await bcrypt.hash(password, 8);
-
-    const response = await db.products.create({ email: email, password: hashpassword });
-    res.send({
-        response
-    })
-
-}
-
+   
 
 module.exports = {
     register, login

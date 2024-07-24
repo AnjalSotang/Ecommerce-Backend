@@ -13,11 +13,17 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded payloads
 const routerAuth = require("./routes/auth")
 app.use('/auth', routerAuth)
 
-const routerProduct = require("./routes/product")
+const routerProduct = require("./routes/product")   
 app.use('/api', routerProduct)
 
 const routerCategory = require("./routes/category")
 app.use('/api', routerCategory)
+
+const routerOrder = require("./routes/order")
+app.use('/api', routerOrder)
+
+const createWishList = require("./routes/wishList")
+app.use('/api', createWishList)
 
 const createUser = async () => {
     let foundAdmin = await db.users.findOne({

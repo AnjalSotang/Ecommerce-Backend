@@ -17,6 +17,7 @@ function checkTokenAndRole(role) {
     jwt.verify(token, JWT_SECRET_KEY, (err, decoded) => {
         console.log(err)
       if (err) {
+        
         return res.status(401).json({ error: "Failed to authenticate token." });
       }
 
