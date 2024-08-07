@@ -5,8 +5,25 @@ const category = async (req, res) => {
   let { name } = req.body;
 
   const response = await db.category.create({ name: name });
+  res.status(200).json({
+    message: "Category creates successfully"
+  })
+}
+
+const findAllCategory = async (req, res) => {
+  const response = await db.category.findAll()
   res.send({
-    response
+    data: response
+  })
+}
+
+
+//Read
+const getUserById = async (req, res) => {
+  let { id } = req.params
+  const response = await db.category.findByPk(id)
+  res.send({
+    data: response
   })
 }
 
@@ -14,7 +31,7 @@ const categoryUpdate = async (req, res) => {
   let { id } = req.params;
   let { name } = req.body;
 
-  const userFOund = await db.category.findByPk({ id });
+  const userFOund = await db.category.findOne({where:{id: id} });
 
   if (userFOund) {
     let response = await db.category.update(

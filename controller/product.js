@@ -10,6 +10,13 @@ const products = async (req, res) => {
     })
 }
 
+const productView = async (req, res) => {
+    const findAll = await db.products.findAll();
+    res.send({
+        findAll
+    })
+}
+
 module.exports = {
     products
 }

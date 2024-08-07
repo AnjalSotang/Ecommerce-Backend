@@ -1,7 +1,7 @@
 const { where } = require("sequelize");
 const db = require("../model");
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
     let email = req.body.email

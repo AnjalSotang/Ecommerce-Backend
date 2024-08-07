@@ -4,7 +4,7 @@ const db = require('./model/index')
 const bcrypt = require('bcrypt')
 
 
-db.dbConnection.sync({ force: 0 });
+db.dbConnection.sync({ force: 0});
 // Built-in middleware functions for parsing request bodies
 // Using these middlewares ensures that your Express application can handle and parse both JSON and URL-encoded data from incoming requests.
 app.use(express.json()); // Parse JSON payloads
@@ -24,6 +24,9 @@ app.use('/api', routerOrder)
 
 const createWishList = require("./routes/wishList")
 app.use('/api', createWishList)
+
+const createCart = require("./routes/addToCart")
+app.use('/api', createCart)
 
 const createUser = async () => {
     let foundAdmin = await db.users.findOne({

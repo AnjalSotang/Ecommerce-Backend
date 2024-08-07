@@ -3,7 +3,6 @@ module.exports = (dbConnection, Sequelize) =>{
         name: {
             type: Sequelize.STRING
         },
-        
     })
     return category;
 }

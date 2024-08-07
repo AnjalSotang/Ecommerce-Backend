@@ -1,8 +1,8 @@
-const { where } = require("sequelize");
 const db = require("../model");
 
+
 const createWish = async (req, res) => {
-    let {product} = req.params;
+    let { product } = req.params;
 
 
     let userId = req.decoded.id
@@ -28,9 +28,11 @@ const findWishById = async (req, res) => {
 }
 
 const findAllWish = async (req, res) => {
-    const orders = await db.wishList.findAll();
+    const findAll = await db.wishList.findAll({
+        include: [{ model: db.products }, { model: db.users }],
+    });
     res.send({
-        orders
+        findAll
     })
 }
 
